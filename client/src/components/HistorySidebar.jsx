@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Clock, ChevronRight, Trash2, Loader2 } from 'lucide-react';
-import API from '../api';
+import API from '../services/api';
 
 export default function HistorySidebar({ userId, onSelectSession, refreshKey }) {
   const [history, setHistory] = useState([]); 

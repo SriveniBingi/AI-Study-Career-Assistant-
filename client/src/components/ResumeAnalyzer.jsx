@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FileSearch, Upload, Loader2, BarChart3, AlertCircle, User, Briefcase, Clock, FileText, Sparkles, RotateCcw, Target, Globe, Map } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import axios from 'axios';
-import API from '../api'; // Adjust the path to wherever you saved api.js
+import API from '../services/api'; // Adjust the path to wherever you saved api.js
 
 export default function ResumeAnalyzer({ roadmapData }) {
   const [mode, setMode] = useState("general"); // modes: "general", "roadmap", "jd"

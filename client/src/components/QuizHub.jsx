@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { BrainCircuit, CheckCircle2, XCircle, RefreshCcw, HelpCircle } from 'lucide-react';
-import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
-import API from '../api';
+import API from '../services/api';
 
 export default function QuizHub({ text }) {
   const [questions, setQuestions] = useState([]);

@@ -2,9 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { summarizeNotes } from '../services/api';
 import { Sparkles, Copy, Loader2, Bookmark, CheckCircle2, Upload, FileText, X } from 'lucide-react'; 
-import axios from 'axios';
 import toast from 'react-hot-toast'; // 🟢 Added Toast
-import API from '../api'; // Adjust the path to wherever you saved api.js
+import axios from 'axios';
+import API from '../services/api'; // Adjust the path to wherever you saved api.js
 
 export default function Summarizer({ onTextChange, initialData, onSaveSuccess }) {
   const fileInputRef = useRef(null);

@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, Send, User, Bot, Loader2, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion'; // For smooth message pops
-import axios from 'axios';
-import API from '../api'; // Adjust the path to wherever you saved api.js
+import API from '../services/api'; // Adjust the path to wherever you saved api.js
 
 export default function DoubtSolver({ context }) {
   const [messages, setMessages] = useState([

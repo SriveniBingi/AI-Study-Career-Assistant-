@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { User, Mail, Lock, Eye, EyeOff, UserPlus, Sparkles, ArrowRight } from 'lucide-react';
 import toast from 'react-hot-toast';
-import API from '../api'; // Adjust the path to wherever you saved api.js
+import API from '../services/api';// Adjust the path to wherever you saved api.js
 
 const Signup = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '', confirmPassword: '' });

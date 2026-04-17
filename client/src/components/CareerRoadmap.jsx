@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Trophy, Briefcase, Star, ChevronRight, Loader2, Compass, Sparkles } from 'lucide-react';
-import API from '../api';
+import API from '../services/api';
 
 export default function CareerRoadmap({ text, setRoadmapData }) {
   const [roadmap, setRoadmap] = useState([]);
