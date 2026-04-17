@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, Send, User, Bot, Loader2, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion'; // For smooth message pops
 import axios from 'axios';
+import API from '../api'; // Adjust the path to wherever you saved api.js
 
 export default function DoubtSolver({ context }) {
   const [messages, setMessages] = useState([
@@ -38,7 +39,7 @@ export default function DoubtSolver({ context }) {
 
     try {
       // 🟢 TIP: Use the /api/ai/chat endpoint we discussed for Groq/OpenRouter speed
-      const response = await axios.post('http://localhost:5000/api/ai/chat', {
+      const response = await API.post('/api/ai/chat', {
         prompt: input,
         context: context, // This is the sharedText from your Dashboard
         type: 'doubt'

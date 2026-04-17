@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Clock, ChevronRight, Trash2, Loader2 } from 'lucide-react';
+import API from '../api';
 
 export default function HistorySidebar({ userId, onSelectSession, refreshKey }) {
   const [history, setHistory] = useState([]); 
@@ -10,7 +11,7 @@ export default function HistorySidebar({ userId, onSelectSession, refreshKey }) 
   const fetchHistory = async () => {
     if (!userId) return;
     try {
-      const res = await axios.get(`http://localhost:5000/api/study/history/${userId}`);
+      const res = await API.get(`/api/study/history/${userId}`);
       // Note: Adjusted the URL to /api/study/history to match a clean route structure
       setHistory(res.data);
     } catch (err) {
@@ -32,7 +33,7 @@ export default function HistorySidebar({ userId, onSelectSession, refreshKey }) 
 
     setDeletingId(sessionId);
     try {
-      const res = await axios.delete(`http://localhost:5000/api/study/delete-session/${sessionId}`);
+      const res = await API.delete(`/api/study/delete-session/${sessionId}`);
       if (res.data.success) {
         // Remove from local state immediately for a smooth UI
         setHistory(prev => prev.filter(item => item._id !== sessionId));

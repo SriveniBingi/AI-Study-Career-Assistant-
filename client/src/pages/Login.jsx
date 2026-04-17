@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Lock, Eye, EyeOff, LogIn, Sparkles, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import API from '../api'; // Adjust the path to wherever you saved api.js
 
 const Login = () => {
   const [isResetMode, setIsResetMode] = useState(false); // 🟢 Switch between Login & Reset
@@ -19,7 +20,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const response = await API.post('/api/auth/login', { email, password });
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
       toast.success(`Welcome back, ${response.data.user.name}!`);
@@ -36,7 +37,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post('http://localhost:5000/api/auth/forgot-password', { email, newPassword });
+      await API.post('/api/auth/forgot-password', { email, newPassword });
       toast.success("Password changed! You can now login.");
       setIsResetMode(false); // Go back to login
       setNewPassword('');

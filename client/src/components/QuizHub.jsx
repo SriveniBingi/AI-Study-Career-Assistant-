@@ -3,6 +3,7 @@ import { BrainCircuit, CheckCircle2, XCircle, RefreshCcw, HelpCircle } from 'luc
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
+import API from '../api';
 
 export default function QuizHub({ text }) {
   const [questions, setQuestions] = useState([]);
@@ -29,7 +30,7 @@ export default function QuizHub({ text }) {
     setShowResults(false);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/quiz', { text });
+      const response = await API.post('/api/quiz', { text });
       if (response.data.success) {
         setQuestions(response.data.data);
       }

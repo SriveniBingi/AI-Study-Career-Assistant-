@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FileSearch, Upload, Loader2, BarChart3, AlertCircle, User, Briefcase, Clock, FileText, Sparkles, RotateCcw, Target, Globe, Map } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
+import API from '../api'; // Adjust the path to wherever you saved api.js
 
 export default function ResumeAnalyzer({ roadmapData }) {
   const [mode, setMode] = useState("general"); // modes: "general", "roadmap", "jd"
@@ -48,9 +49,9 @@ export default function ResumeAnalyzer({ roadmapData }) {
     data.append('file', file);
 
     try {
-      const textRes = await axios.post('http://localhost:5000/api/upload-pdf', data);
+      const textRes = await API.post('/api/upload-pdf', data);
       
-      const res = await axios.post('http://localhost:5000/api/analyze-resume', {
+      const res = await API.post('/api/analyze-resume', {
         ...formData,
         resumeText: textRes.data.text,
         roadmapData: mode === "roadmap" ? roadmapData : null,

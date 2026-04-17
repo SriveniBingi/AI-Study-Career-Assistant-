@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Trophy, Briefcase, Star, ChevronRight, Loader2, Compass, Sparkles } from 'lucide-react';
-import axios from 'axios';
+import API from '../api';
 
 export default function CareerRoadmap({ text, setRoadmapData }) {
   const [roadmap, setRoadmap] = useState([]);
@@ -23,7 +23,7 @@ export default function CareerRoadmap({ text, setRoadmapData }) {
   setLoading(true);
   setError("");
   try {
-    const response = await axios.post('http://localhost:5000/api/career-roadmap', { text });
+    const response = await API.post("/api/login", data);
     
     // 🔍 Check if the response actually has data
     if (response.data && response.data.success) {

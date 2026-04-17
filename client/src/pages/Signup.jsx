@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { User, Mail, Lock, Eye, EyeOff, UserPlus, Sparkles, ArrowRight } from 'lucide-react';
 import toast from 'react-hot-toast';
+import API from '../api'; // Adjust the path to wherever you saved api.js
 
 const Signup = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '', confirmPassword: '' });
@@ -21,7 +22,7 @@ const Signup = () => {
 
     setLoading(true);
     try {
-      await axios.post('http://localhost:5000/api/auth/signup', {
+      await API.post('/api/auth/signup', {
         name: formData.name,
         email: formData.email,
         password: formData.password
