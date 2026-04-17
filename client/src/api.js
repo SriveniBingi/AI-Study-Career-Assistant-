@@ -16,4 +16,9 @@ export const summarizeNotes = async (formData) => {
     return response.data;
 };
 
+export const generateRoadmap = async (data) => {
+    const response = await API.post('/api/roadmap', data);
+    return response.data;
+};
+
 export default API;
