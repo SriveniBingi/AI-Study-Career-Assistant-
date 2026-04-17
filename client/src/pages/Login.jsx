@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Lock, Eye, EyeOff, LogIn, Sparkles, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import toast from 'react-hot-toast';
-import API from '../services/api'; // Adjust the path to wherever you saved api.js
+import API from '../services/api';  // Adjust the path to wherever you saved api.js
 
 const Login = () => {
   const [isResetMode, setIsResetMode] = useState(false); // 🟢 Switch between Login & Reset
