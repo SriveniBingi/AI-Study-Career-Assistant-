@@ -218,4 +218,14 @@ app.post('/api/analyze-resume', async (req, res) => {
 });
 
 const PORT = 5000;
+
+app.use((err, req, res, next) => {
+  console.error("DEBUG ERROR:", err.message); // This WILL show up in Render logs
+  res.status(500).json({ 
+    success: false, 
+    message: "Server Error", 
+    error: err.message 
+  });
+});
+
 app.listen(PORT, () => console.log(`🚀 Premium Server on port ${PORT}`));
