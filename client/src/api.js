@@ -21,4 +21,7 @@ export const generateRoadmap = async (data) => {
     return response.data;
 };
 
+export const loginUser = (data) => API.post('/api/auth/login', data);
+export const signupUser = (data) => API.post('/api/auth/signup', data);
+
 export default API;
