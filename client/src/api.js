@@ -8,4 +8,12 @@ const API = axios.create({
     baseURL: BASE_URL,
 });
 
+export const summarizeNotes = async (formData) => {
+    // This uses your custom API instance we just set up
+    const response = await API.post('/api/summarize', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+    });
+    return response.data;
+};
+
 export default API;
