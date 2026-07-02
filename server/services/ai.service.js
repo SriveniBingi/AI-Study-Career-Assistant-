@@ -30,11 +30,10 @@ const AIService = {
         return groqRes.data.choices[0].message.content;
       }
 
-    } } catch (error) {
+    } catch (error) { // ✅ FIXED: Removed the extra duplicate brace here
       // 🔴 CHANGE THIS LINE to print the whole error detail
       console.error("❌ FULL GROQ ERROR:", error); 
-      
-      console.error("❌ Groq Error:", error.response?.data?.error?.message || error.message);}
+      console.error("❌ Groq Error:", error.response?.data?.error?.message || error.message);
       
       // 2. Fallback to OpenRouter (Gemini 2.0 Flash)
       console.log("⚠️ Switching to OpenRouter Backup...");
@@ -50,7 +49,7 @@ const AIService = {
           },
           {
             headers: { 
-             "Authorization": `Bearer ${(process.env.OPENROUTER_API_KEY || "").trim()}`,
+              "Authorization": `Bearer ${(process.env.OPENROUTER_API_KEY || "").trim()}`,
               "Content-Type": "application/json"
             },
             timeout: 30000
@@ -64,6 +63,7 @@ const AIService = {
       }
     }
   },
+
   async generateSummary(text) {
     const prompt = `Summarize this educational text into 3 clear paragraphs: ${text}`;
     return await this.askAI(prompt, "You are an expert academic summarizer.");
