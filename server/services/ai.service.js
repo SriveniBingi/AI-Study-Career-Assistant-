@@ -30,7 +30,10 @@ const AIService = {
         return groqRes.data.choices[0].message.content;
       }
 
-    } catch (error) {
+    } } catch (error) {
+      // 🔴 CHANGE THIS LINE to print the whole error detail
+      console.error("❌ FULL GROQ ERROR:", error); 
+      
       console.error("❌ Groq Error:", error.response?.data?.error?.message || error.message);
       
       // 2. Fallback to OpenRouter (Gemini 2.0 Flash)
