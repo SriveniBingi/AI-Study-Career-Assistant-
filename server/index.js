@@ -4,7 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const multer = require('multer'); // ✅ New: For handling file uploads
 const pdf = require('pdf-parse'); // ✅ New: For reading PDF text
-const AIService = require('./services/ai.service');
+const AIService = require('./services/ai.service.js');
 const Study = require('./models/Study');
 const authRoutes = require('./routes/auth');
 
