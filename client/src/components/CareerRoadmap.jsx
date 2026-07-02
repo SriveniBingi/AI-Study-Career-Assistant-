@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Trophy, Briefcase, Star, ChevronRight, Loader2, Compass, Sparkles } from 'lucide-react';
-import API from '../services/api';
+import API, { generateRoadmap as fetchRoadmapApi } from '../services/api';
+
 
 export default function CareerRoadmap({ text, setRoadmapData }) {
   const [roadmap, setRoadmap] = useState([]);
@@ -22,8 +23,9 @@ export default function CareerRoadmap({ text, setRoadmapData }) {
 
   setLoading(true);
   setError("");
+  // 🟢 PASTE THESE LINES INSTEAD:
   try {
-    const response = await API.post("/api/login", data);
+  const responseData = await fetchRoadmapApi(text);
     
     // 🔍 Check if the response actually has data
     if (response.data && response.data.success) {
