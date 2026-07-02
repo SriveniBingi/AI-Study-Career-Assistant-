@@ -25,15 +25,15 @@ export default function CareerRoadmap({ text, setRoadmapData }) {
   setError("");
   // 🟢 PASTE THESE LINES INSTEAD:
   try {
-  const responseData = await fetchRoadmapApi(text);
+    // 1. Hit the roadmap endpoint directly passing { text } 
+    const response = await API.post("/api/roadmap", { text });
     
-    // 🔍 Check if the response actually has data
+    // 2. Read the response using the exact path it returns
     if (response.data && response.data.success) {
       const roadmapData = response.data.data;
       
-      setRoadmap(roadmapData); // Local state for the timeline
+      setRoadmap(roadmapData); 
       
-      // 🟢 IMPORTANT: This sends the data to Dashboard.jsx
       if (typeof setRoadmapData === 'function') {
         setRoadmapData(roadmapData); 
       }
