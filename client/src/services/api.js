@@ -17,9 +17,14 @@ export const summarizeNotes = async (text) => {
     return response.data;
 };
 
-export const generateRoadmap = async (data) => {
-    const response = await API.post('/api/roadmap', data);
+export const generateRoadmap = async (text) => {
+    // Wrap the string explicitly in an object property { text } 
+    // and specify the JSON content-type header
+    const response = await API.post('/api/roadmap', { text }, {
+        headers: { 'Content-Type': 'application/json' }
+    });
     return response.data;
+};
 };
 
 export const loginUser = (data) => API.post('/api/auth/login', data);
