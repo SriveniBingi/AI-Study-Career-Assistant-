@@ -34,7 +34,7 @@ const AIService = {
       // 🔴 CHANGE THIS LINE to print the whole error detail
       console.error("❌ FULL GROQ ERROR:", error); 
       
-      console.error("❌ Groq Error:", error.response?.data?.error?.message || error.message);
+      console.error("❌ Groq Error:", error.response?.data?.error?.message || error.message);}
       
       // 2. Fallback to OpenRouter (Gemini 2.0 Flash)
       console.log("⚠️ Switching to OpenRouter Backup...");
