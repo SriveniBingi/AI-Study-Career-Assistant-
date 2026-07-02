@@ -26,7 +26,7 @@ export default function CareerRoadmap({ text, setRoadmapData }) {
   // 🟢 PASTE THESE LINES INSTEAD:
   try {
     // 1. Hit the roadmap endpoint directly passing { text } 
-    const response = await API.post("/api/roadmap", { text });
+    const response = await API.post("/api/career-roadmap", { text });
     
     // 2. Read the response using the exact path it returns
     if (response.data && response.data.success) {
