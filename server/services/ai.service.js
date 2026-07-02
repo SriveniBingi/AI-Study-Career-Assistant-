@@ -18,7 +18,7 @@ const AIService = {
         },
         {
           headers: { 
-            "Authorization": `Bearer ${process.env.GROQ_API_KEY.trim()}`,
+            "Authorization": `Bearer ${(process.env.GROQ_API_KEY || "").trim()}`,
             "Content-Type": "application/json"
           },
           timeout: 30000 // 30 second limit
@@ -47,7 +47,7 @@ const AIService = {
           },
           {
             headers: { 
-              "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY.trim()}`,
+             "Authorization": `Bearer ${(process.env.OPENROUTER_API_KEY || "").trim()}`,
               "Content-Type": "application/json"
             },
             timeout: 30000
