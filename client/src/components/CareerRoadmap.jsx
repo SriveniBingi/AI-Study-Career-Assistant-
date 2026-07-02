@@ -125,7 +125,7 @@ export default function CareerRoadmap({ text, setRoadmapData }) {
               className="mt-16 bg-gradient-to-br from-blue-600 to-indigo-700 p-10 rounded-[3rem] text-center text-white shadow-2xl"
             >
               <h3 className="text-2xl font-bold mb-2">Ready to Launch!</h3>
-              <p className="opacity-80">Follow this roadmap to turn your MCA studies into a professional career.</p>
+              <p className="opacity-80">Follow this roadmap to turn your studies into a professional career.</p>
             </motion.div>
           </div>
         )}
