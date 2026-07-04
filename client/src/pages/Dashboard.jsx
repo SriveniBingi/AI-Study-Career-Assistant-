@@ -30,6 +30,8 @@ export default function Dashboard() {
   const [historyVersion, setHistoryVersion] = useState(0);
   const [user, setUser] = useState({ name: 'Sita', id: '', email: '' });
   const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState('summarizer');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); 
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -128,7 +130,6 @@ export default function Dashboard() {
         <header className="h-20 px-10 flex items-center justify-between border-b border-slate-50 bg-white/80 backdrop-blur-md z-10">
           
           {/* Greeting on the Left */}
-          // 🟢 New Block:
           <div className="flex items-center gap-3">
             <button 
               onClick={() => setIsMobileMenuOpen(true)}
@@ -140,6 +141,7 @@ export default function Dashboard() {
               <h3 className="text-sm md:text-lg font-bold text-slate-800 leading-tight truncate max-w-[160px] sm:max-w-xs">
                 Hello {user.name}
               </h3>
+            </div>
           
           {/* Profile Card on the Far Right */}
           <div className="flex items-center gap-4 bg-white p-1.5 pr-5 rounded-2xl border border-slate-100 shadow-sm">
