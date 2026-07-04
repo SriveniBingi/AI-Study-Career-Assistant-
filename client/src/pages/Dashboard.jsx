@@ -30,7 +30,6 @@ export default function Dashboard() {
   const [historyVersion, setHistoryVersion] = useState(0);
   const [user, setUser] = useState({ name: 'Sita', id: '', email: '' });
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('summarizer');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); 
 
   useEffect(() => {
@@ -58,14 +57,14 @@ export default function Dashboard() {
     <div className="flex flex-col md:flex-row h-screen bg-[#F8FAFC] font-sans overflow-hidden">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Nunito:wght@400;600;700;800&display=swap');
-        /* 🟢 THIS MAKES YOUR BOXES VISIBLE */
+        /* THIS MAKES YOUR BOXES VISIBLE */
         .workspace-container-box {
             border: 3px solid #94A3B8 !important; /* Thick Slate-400 border */
             background-color: #FFFFFF;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
-        /* 🟢 THIS MAKES THE INNER INPUT BOXES (LIKE SUMMARIZER) VISIBLE */
+        /* THIS MAKES THE INNER INPUT BOXES (LIKE SUMMARIZER) VISIBLE */
         textarea, .drop-zone, .input-field {
             border: 2px solid #64748B !important; /* Solid Darker Slate */
             background-color: #F8FAFC !important; /* Light contrast background */
@@ -123,6 +122,14 @@ export default function Dashboard() {
         </div>
       </aside>
 
+      {/* Mobile Dark Overlay Background */}
+      {isMobileMenuOpen && (
+        <div 
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-40 md:hidden"
+        />
+      )}
+
       {/* ── 2. MAIN CONTENT ── */}
       <div className="flex-1 flex flex-col overflow-hidden">
         
@@ -142,6 +149,7 @@ export default function Dashboard() {
                 Hello {user.name}
               </h3>
             </div>
+          </div>
           
           {/* Profile Card on the Far Right */}
           <div className="flex items-center gap-4 bg-white p-1.5 pr-5 rounded-2xl border border-slate-100 shadow-sm">
