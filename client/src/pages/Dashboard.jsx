@@ -134,31 +134,31 @@ export default function Dashboard() {
       <div className="flex-1 flex flex-col min-h-0 w-full">
         
         {/* 🔝 HEADER: Split Greeting (Left) and Profile (Right) */}
-        <header className="h-20 px-10 flex items-center justify-between border-b border-slate-50 bg-white/80 backdrop-blur-md z-10">
-          
-          {/* Greeting on the Left */}
-          <div className="flex items-center gap-3">
+        <header className="h-20 px-4 md:px-10 flex items-center justify-between border-b border-slate-100 bg-white z-10 w-full shrink-0">
+  
+          <div className="flex items-center gap-3 min-w-0">
             <button 
               onClick={() => setIsMobileMenuOpen(true)}
-              className="p-2.5 bg-slate-50 text-slate-700 rounded-xl border border-slate-200 md:hidden hover:bg-slate-100 transition-all"
+              className="p-2.5 bg-slate-50 text-slate-700 rounded-xl border border-slate-200 md:hidden hover:bg-slate-100 transition-all shrink-0"
             >
               <Menu size={22} />
             </button>
-            <div>
-              <h3 className="text-sm md:text-lg font-bold text-slate-800 leading-tight truncate max-w-[160px] sm:max-w-xs">
+            <div className="min-w-0">
+              <h3 className="text-sm md:text-lg font-bold text-slate-800 leading-tight truncate">
                 Hello {user.name}
               </h3>
+              <p className="text-[10px] text-blue-600 font-black uppercase tracking-widest">Workspace</p>
             </div>
           </div>
           
-          {/* Profile Card on the Far Right */}
-          <div className="flex items-center gap-4 bg-white p-1.5 pr-5 rounded-2xl border border-slate-100 shadow-sm">
-            <div className="flex flex-col text-right">
-              <span className="text-sm font-bold text-slate-800 leading-tight">{user.name}</span>
-              <span className="text-[11px] text-slate-400 font-medium">{user.email}</span>
+          {/* Profile Card on the Far Right - Hidden email details on mobile grids */}
+          <div className="flex items-center gap-2 md:gap-4 bg-white p-1.5 md:pr-5 rounded-2xl border border-slate-100 shadow-xs shrink-0">
+            <div className="hidden sm:flex flex-col text-right min-w-0">
+              <span className="text-xs md:text-sm font-bold text-slate-800 leading-tight truncate">{user.name}</span>
+              <span className="text-[11px] text-slate-400 font-medium truncate max-w-[120px]">{user.email}</span>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-blue-600">
-               <User size={20} />
+            <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-slate-100 flex items-center justify-center text-blue-600 shrink-0">
+               <User size={18} />
             </div>
           </div>
         </header>
