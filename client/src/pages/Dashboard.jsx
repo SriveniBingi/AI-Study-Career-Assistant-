@@ -53,7 +53,7 @@ export default function Dashboard() {
   const activeTabData = TABS.find(t => t.id === activeTab);
 
   return (
-    <div className="flex h-screen bg-[#F8FAFC] font-sans overflow-hidden">
+    <div className="flex flex-col md:flex-row h-screen bg-[#F8FAFC] font-sans overflow-hidden">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Nunito:wght@400;600;700;800&display=swap');
         /* 🟢 THIS MAKES YOUR BOXES VISIBLE */
@@ -71,7 +71,7 @@ export default function Dashboard() {
       `}</style>
 
       {/* ── 1. SIDEBAR ── */}
-      <aside className="w-72 bg-white border-r border-slate-100 flex flex-col p-6 shadow-sm z-50">
+      <aside className={`fixed inset-y-0 left-0 w-72 bg-white border-r border-slate-100 flex flex-col p-6 shadow-xl md:shadow-sm z-50 transition-transform duration-300 md:static md:translate-x-0 ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"}`}>
         <div className="flex items-center gap-3 mb-10 px-2">
           <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-100">
             <GraduationCap size={24} />
@@ -128,12 +128,18 @@ export default function Dashboard() {
         <header className="h-20 px-10 flex items-center justify-between border-b border-slate-50 bg-white/80 backdrop-blur-md z-10">
           
           {/* Greeting on the Left */}
-          <div>
-            <h3 className="text-lg font-bold text-slate-800 leading-tight">
-              Hello {user.name}, Welcome Back
-            </h3>
-            <p className="text-[11px] text-blue-600 font-black uppercase tracking-widest">Workspace</p>
-          </div>
+          // 🟢 New Block:
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="p-2.5 bg-slate-50 text-slate-700 rounded-xl border border-slate-200 md:hidden hover:bg-slate-100 transition-all"
+            >
+              <Menu size={22} />
+            </button>
+            <div>
+              <h3 className="text-sm md:text-lg font-bold text-slate-800 leading-tight truncate max-w-[160px] sm:max-w-xs">
+                Hello {user.name}
+              </h3>
           
           {/* Profile Card on the Far Right */}
           <div className="flex items-center gap-4 bg-white p-1.5 pr-5 rounded-2xl border border-slate-100 shadow-sm">
@@ -148,7 +154,7 @@ export default function Dashboard() {
         </header>
 
         {/* Content Container */}
-        <main className="flex-1 overflow-y-auto p-10 bg-[#F8FAFC]">
+        <main className="flex-1 overflow-y-auto p-4 md:p-10 bg-[#F8FAFC] w-full">
           <div className="max-w-5xl mx-auto">
             <AnimatePresence mode="wait">
               <motion.div
