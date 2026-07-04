@@ -189,14 +189,7 @@ export default function Dashboard() {
                   <p className="text-xs text-blue-600 font-black uppercase tracking-widest mb-1">User Profile</p>
                   <span className="text-sm font-black text-slate-800 font-sora">{user.name}</span>
                   <span className="text-xs font-medium text-slate-500 mb-3 truncate">{user.email}</span>
-                  
-                  {/* Quick logout anchor inside profile card for quick mobile access */}
-                  <button 
-                    onClick={() => { localStorage.clear(); navigate('/'); }}
-                    className="w-full text-left py-2 px-3 text-red-500 hover:bg-red-50 font-bold text-xs rounded-xl transition-all uppercase tracking-wider"
-                  >
-                    Logout Account
-                  </button>
+            
                 </motion.div>
               )}
             </AnimatePresence>
