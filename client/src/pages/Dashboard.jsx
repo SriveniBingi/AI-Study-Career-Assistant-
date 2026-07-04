@@ -30,6 +30,7 @@ export default function Dashboard() {
   const [historyVersion, setHistoryVersion] = useState(0);
   const [user, setUser] = useState({ name: 'Sita', id: '', email: '' });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); 
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -160,14 +161,45 @@ export default function Dashboard() {
           </div>
           
           {/* Profile Card Far Right */}
-          <div className="flex items-center gap-4 bg-white p-1.5 md:pr-5 rounded-2xl border border-slate-50 shadow-xs shrink-0">
-            <div className="flex flex-col text-right hidden sm:flex min-w-0">
-              <span className="text-sm font-bold text-slate-800 leading-tight truncate">{user.name}</span>
-              <span className="text-[11px] text-slate-400 font-medium truncate max-w-[120px]">{user.email}</span>
+          <div className="relative shrink-0">
+            {/* Tap target container */}
+            <div 
+              onClick={() => setIsProfileOpen(!isProfileOpen)}
+              className="flex items-center gap-2 bg-white p-1.5 md:pr-5 rounded-2xl border border-slate-100 shadow-xs cursor-pointer hover:bg-slate-50 transition-all select-none"
+            >
+              {/* Always visible on Desktop, hidden on mobile default view */}
+              <div className="hidden sm:flex flex-col text-right min-w-0">
+                <span className="text-xs md:text-sm font-bold text-slate-800 leading-tight truncate">{user.name}</span>
+                <span className="text-[11px] text-slate-400 font-medium truncate max-w-[120px]">{user.email}</span>
+              </div>
+              <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-slate-100 flex items-center justify-center text-blue-600 shrink-0">
+                 <User size={18} />
+              </div>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-blue-600 shrink-0">
-               <User size={20} />
-            </div>
+          
+            {/* Mobile Dropdown Card Menu */}
+            <AnimatePresence>
+              {isProfileOpen && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                  className="absolute right-0 mt-2 w-56 bg-white p-4 rounded-2xl border border-slate-100 shadow-xl z-50 flex flex-col gap-1"
+                >
+                  <p className="text-xs text-blue-600 font-black uppercase tracking-widest mb-1">User Profile</p>
+                  <span className="text-sm font-black text-slate-800 font-sora">{user.name}</span>
+                  <span className="text-xs font-medium text-slate-500 mb-3 truncate">{user.email}</span>
+                  
+                  {/* Quick logout anchor inside profile card for quick mobile access */}
+                  <button 
+                    onClick={() => { localStorage.clear(); navigate('/'); }}
+                    className="w-full text-left py-2 px-3 text-red-500 hover:bg-red-50 font-bold text-xs rounded-xl transition-all uppercase tracking-wider"
+                  >
+                    Logout Account
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </header>
 
