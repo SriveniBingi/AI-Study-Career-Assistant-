@@ -54,7 +54,7 @@ export default function Dashboard() {
   const activeTabData = TABS.find(t => t.id === activeTab);
 
   return (
-    <div className="flex flex-col md:flex-row h-screen bg-[#F8FAFC] font-sans overflow-hidden">
+    <div className="flex flex-col md:flex-row min-h-screen bg-[#F8FAFC] font-sans overflow-x-hidden">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Nunito:wght@400;600;700;800&display=swap');
         /* THIS MAKES YOUR BOXES VISIBLE */
@@ -131,7 +131,7 @@ export default function Dashboard() {
       )}
 
       {/* ── 2. MAIN CONTENT ── */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col min-h-0 w-full">
         
         {/* 🔝 HEADER: Split Greeting (Left) and Profile (Right) */}
         <header className="h-20 px-10 flex items-center justify-between border-b border-slate-50 bg-white/80 backdrop-blur-md z-10">
